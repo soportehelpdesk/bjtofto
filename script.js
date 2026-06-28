@@ -5,26 +5,26 @@ let currentLang = 'ca';
 // Pots afegir ací tantes imatges com vulgues per a cada secció
 const fotosBaseDeDades = {
     curses: [
-        { src: 'imatges/curses.jpg', alt: 'Cursa 1' },
-        { src: 'imatges/curses.jpg', alt: 'Cursa 2' },
-        { src: 'imatges/curses.jpg', alt: 'Cursa 3' }
+        { src: 'curses.JPG', alt: 'Cursa 1' },
+        { src: 'curses.JPG', alt: 'Cursa 2' },
+        { src: 'curses.JPG', alt: 'Cursa 3' }
     ],
     muixerangues: [
-        { src: 'imatges/muixerangues.jpg', alt: 'Muixeranga 1' },
-        { src: 'imatges/muixerangues.jpg', alt: 'Muixeranga 2' }
+        { src: 'muixerangues.JPG', alt: 'Muixeranga 1' },
+        { src: 'muixerangues.JPG', alt: 'Muixeranga 2' }
     ],
     futbol: [
-        { src: 'imatges/futbol.jpg', alt: 'Futbol 1' }
+        { src: 'futbol.jpg', alt: 'Futbol 1' }
     ],
     basquet: [
-        { src: 'imatges/basquet.jpg', alt: 'Basquet 1' }
+        { src: 'basquet.JPG', alt: 'Basquet 1' }
     ]
 };
 
 // Títols de les galeries segons l'idioma
 const galleryTitles = {
     curses: { ca: 'Curses de Muntanya', es: 'Carreras de Montaña' },
-    muixerangues: { ca: 'Trobades de Muixerangues', es: 'Encuentros de Muixerangues' },
+    muixerangues: { ca: 'Trobades de Muixerangues', es: 'Trobades de Muixerangues' },
     futbol: { ca: 'Futbol Sala', es: 'Fútbol Sala' },
     basquet: { ca: 'Partits de Bàsquet', es: 'Partidos de Baloncesto' }
 };
