@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@bojito_foto | Fotografia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Capçalera (Sempre visible) -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area" onclick="navigateTo('portada')">
+                <img src="imatges/imatge.jpeg" alt="Logo" class="logo-img">
+            </div>
+            <nav>
+                <a href="#" onclick="navigateTo('portada')" data-lang-ca="Inici" data-lang-es="Inicio">Inici</a>
+                <a href="#" onclick="navigateTo('sobre-mi')" data-lang-ca="Sobre mi" data-lang-es="Sobre mí">Sobre mi</a>
+                <a href="#" onclick="navigateTo('contacte')" data-lang-ca="Contacte" data-lang-es="Contacto">Contacte</a>
+                <a href="#" onclick="navigateTo('notes')" data-lang-ca="Notes" data-lang-es="Notas" style="color: #88D6E6;">Notes</a>
+            </nav>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('ca')" class="btn-lang active">VAL</button>
+                <button onclick="setLanguage('es')" class="btn-lang">CAS</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PÀGINA 1: PORTADA -->
+    <main id="page-portada" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-lang-ca="@bojito_foto" data-lang-es="@bojito_foto">@bojito_foto</h1>
+                <p data-lang-ca="Fotografia esportiva, de muntanya i tradicions." data-lang-es="Fotografía deportiva, de montaña y tradiciones.">Fotografia esportiva, de muntanya i tradicions.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <h2 data-lang-ca="Galeria" data-lang-es="Galeria">Galeria</h2>
+            <div class="categories-grid">
+                <!-- Al fer clic, va a la pàgina de galeria i filtra -->
+                <div class="category-card" onclick="openGallery('curses')">
+                    <img src="imatges/curses.jpg" alt="Curses de muntanya">
+                    <div class="card-overlay"><span data-lang-ca="Curses de Muntanya" data-lang-es="Carreras de Montaña">Curses de Muntanya</span></div>
+                </div>
+                <div class="category-card" onclick="openGallery('muixerangues')">
+                    <img src="imatges/muixerangues.jpg" alt="Muixerangues">
+                    <div class="card-overlay"><span data-lang-ca="Muixerangues" data-lang-es="Muixerangues">Muixerangues</span></div>
+                </div>
+                <div class="category-card" onclick="openGallery('futbol')">
+                    <img src="imatges/futbol.jpg" alt="Futbol Sala">
+                    <div class="card-overlay"><span data-lang-ca="Futbol Sala" data-lang-es="Fútbol Sala">Futbol Sala</span></div>
+                </div>
+                <div class="category-card" onclick="openGallery('basquet')">
+                    <img src="imatges/basquet.jpg" alt="Bàsquet">
+                    <div class="card-overlay"><span data-lang-ca="Bàsquet" data-lang-es="Baloncesto">Bàsquet</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PÀGINA 2: GALERIA DETALLADA -->
+    <main id="page-galeria" class="page">
+        <section class="section-padding">
+            <div class="back-area">
+                <button onclick="navigateTo('portada')" class="btn-back" data-lang-ca="← Tornar a l'inici" data-lang-es="← Volver al inicio">← Tornar a l'inici</button>
+            </div>
+            
+            <!-- El títol canviarà dinàmicament en JS -->
+            <h2 id="gallery-title">Galeria</h2>
+
+            <!-- Grid on es mostraran TOTES les fotos de la categoria clicada -->
+            <div class="gallery-grid" id="gallery-images-container">
+                <!-- Les fotos es carreguen per JavaScript ací dins -->
+            </div>
+        </section>
+    </main>
+
+    <!-- PÀGINA 3: SOBRE MI -->
+    <main id="page-sobre-mi" class="page">
+        <section class="section-padding content-center">
+            <div class="container-text">
+                <h2 data-lang-ca="Sobre mi" data-lang-es="Sobre mí">Sobre mi</h2>
+                <p data-lang-ca="Hola! Soc un apassionat de la fotografia en els meus ratets lliures. M'encanta capturar l'adrenalina de les curses de muntanya, la màgia i força de les trobades de muixerangues, i la intensitat de cada jugada en els partits de bàsquet i futbol sala." 
+                   data-lang-es="¡Hola! Soy un apasionado de la fotografía en mis ratos libres. Me encanta capturar la adrenalina de las carreras de montaña, la magia y fuerza de los encuentros de muixerangues, y la intensidad de cada jugada en los partidos de baloncesto y fútbol sala.">
+                   Hola! Soc un apassionat de la fotografia en els meus ratets lliures...
+                </p>
+            </div>
+        </section>
+    </main>
+
+   <!-- PÀGINA 4: CONTACTE -->
+    <main id="page-contacte" class="page">
+        <section class="section-padding content-center">
+            <div class="container-text">
+                <h2 data-lang-ca="Contacte" data-lang-es="Contacto">Contacte</h2>
+                <p data-lang-ca="Vols alguna foto o que cobrisca el teu pròxim esdeveniment? Parlem directament!" 
+                   data-lang-es="¿Quieres alguna foto o que cubra tu próximo evento? ¡Hablamos directamente!">
+                   Vols alguna foto o que cobrisca el teu pròxim esdeveniment? Parlem directament!
+                </p>
+                
+                <!-- Botons de contacte directe -->
+                <div class="contact-buttons-container">
+                    
+                    <!-- Enllaç directe a Gmail -->
+                    <a href="mailto:jorgefsfotografia@gmail.com" class="btn-contact email-btn">
+                        <span class="icon">✉</span> 
+                        <span>Email</span>
+                    </a>
+                    
+                    <!-- Enllaç directe a Instagram amb icona SVG oficial -->
+                    <a href="https://www.instagram.com/bojito_foto" target="_blank" rel="noopener noreferrer" class="btn-contact instagram-btn">
+                        <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- PÀGINA: NOTES DE L'AUTOR -->
+    <main id="page-notes" class="page">
+        <section class="section-padding content-center">
+            <div class="container-text" style="max-width: 750px; margin: 0 auto;">
+                
+                <div class="notes-card" style="border: 2px solid #88D6E6; padding: 40px 35px; border-radius: 15px; text-align: left; background-color: #1a1a1a; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
+                    
+                    <!-- Títol estil capçalera de carta -->
+                    <h2 data-lang-ca="Notes de l'autor 📝" data-lang-es="Notas del autor 📝" style="text-align: left; margin-bottom: 30px; font-size: 2rem; color: #88D6E6;">
+                        Notes de l'autor 📝
+                    </h2>
+                    
+                    <!-- Cos del text -->
+                    <div class="notes-content" style="line-height: 1.8; color: #ffffff; font-size: 1.05rem; display: flex; flex-direction: column; gap: 15px;">
+                        
+                        <p data-lang-ca="Hola, Jorgito." data-lang-es="Hola, Jorgito.">
+                            Hola, Jorgito.
+                        </p>
+                        
+                        <p data-lang-ca="He creat aquest esborrany de pàgina web més o menys seguint l’estil d’un portfoli, però amb els teus colors i tal. Al final, açò ha de ser una web que t’agrade a tu, ha d’estar 100% al teu gust i es poden fer tots els canvis que tu vulgues, perquè el codi dona molt de si per a fer tot allò que tingues al cap."
+                           data-lang-es="He creado este borrador de página web más o menos siguiendo el estilo de un portfolio, pero con tus colores y tal. Al final, esto tiene que ser una web que te guste a ti, tiene que estar 100% a tu gusto y se pueden hacer todos los cambios que tú quieras, porque el código da mucho de sí para hacer todo aquello que tengas en la cabeza.">
+                            He creat aquest esborrany de pàgina web més o menys seguint l’estil d’un portfoli, però amb els teus colors i tal. Al final, açò ha de ser una web que t’agrade a tu, ha d’estar 100% al teu gust i es poden fer tots els canvis que tu vulgues, perquè el codi dona molt de si per a fer tot allò que tingues al cap.
+                        </p>
+                        
+                        <p data-lang-ca="He pensat en una pàgina que tinga una portada on aparega la teua galeria, distingint les diferents categories de fotos que sols fer. Perquè pogueres veure la idea, he gastat fotos d’exemple."
+                           data-lang-es="He pensado en una página que tenga una portada donde aparezca tu galería, distinguiendo las diferentes categorías de fotos que sueles hacer. Para que pudieras ver la idea, he usado fotos de ejemplo.">
+                            He pensat en una pàgina que tinga una portada on aparega la teua galeria, distingint les diferents categories de fotos que sols fer. Perquè pogueres veure la idea, he gastat fotos d’exemple.
+                        </p>
+                        
+                        <p data-lang-ca="En el cas de cada categoria, quan fas clic et mostra, per ara, la mateixa foto que en la portada. La idea d’això és que cada foto siga la portada d’una carpeta on estiguen les fotos de cada cursa, cada partit o cada trobada de muixerangues."
+                           data-lang-es="En el caso de cada categoría, cuando haces clic te muestra, por ahora, la misma foto que en la portada. La idea de esto es que cada foto sea la portada de una carpeta donde estén las fotos de cada carrera, cada partido o cada encuentro de muixerangues.">
+                            En el cas de cada categoria, quan fas clic et mostra, per ara, la mateixa foto que en la portada. La idea d’això és que cada foto siga la portada d’una carpeta on estiguen les fotos de cada cursa, cada partit o cada trobada de muixerangues.
+                        </p>
+                        
+                        <p data-lang-ca="També hi ha una pàgina perquè pugues explicar un poquet de tu, on es pot afegir una foto o el que siga."
+                           data-lang-es="También hay una página para que puedas explicar un poco de ti, donde se puede añadir una foto o lo que sea.">
+                            També hi ha una pàgina perquè pugues explicar un poquet de tu, on es pot afegir una foto o el que siga.
+                        </p>
+                        
+                        <p data-lang-ca="En la pàgina de contacte he posat dos botons: un que et porta al teu Instagram i un altre que et porta a escriure't un correu. També es pot posar un formulari de contacte, si volgueres. Tot és possible jeje."
+                           data-lang-es="En la página de contacto haber puesto dos botones: uno que te lleva a tu Instagram y otro que te lleva a escribirte un correo. También se puede poner un formulario de contacto, si quisieras. Todo es posible jeje.">
+                            En la pàgina de contacte he posat dos botons: un que et porta al teu Instagram i un altre que et porta a escriure't un correu. També es pot posar un formulari de contacte, si volgueres. Tot és possible jeje.
+                        </p>
+                        
+                        <p data-lang-ca="Repetisc, és tot un exemple, ha d’estar al teu gust. Give me feedback."
+                           data-lang-es="Repito, es todo un ejemplo, tiene que estar a tu gusto. Give me feedback.">
+                            Repetisc, és tot un exemple, ha d’estar al teu gust. Give me feedback.
+                        </p>
+                        
+                        <!-- Línia decorativa de separació per a la part més personal -->
+                        <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #88D6E6, transparent); margin: 20px 0;">
+
+                        <p data-lang-ca="Aprofite per a dir-te que m’agrada molt la idea de fer-te la pàgina web. M’ha agradat sempre el desenvolupament web (com a hobby, no m’agradaria dedicar-me, jejej) i amb aquestes coses tinc l’oportunitat de trastejar un poc. Amb açò també et vull dir que no tingues cap pena a l’hora de demanar canvis."
+                           data-lang-es="Aprovecho para decirte que me gusta mucho la idea de hacerte la página web. Me ha gustado siempre el desarrollo web (como hobby, no me gustaría dedicarme, jejej) y con estas cosas tengo la oportunidad de trastear un poco. Con esto también te quiero decir que no tengas ningún reparo a la hora de pedir cambios.">
+                            Aprofite per a dir-te que m’agrada molt la idea de fer-te la pàgina web. M’ha agradat sempre el desenvolupament web (com a hobby, no m’agradaria dedicar-me, jejej) i amb aquestes coses tinc l’oportunitat de trastejar un poc. Amb açò també et vull dir que no tingues cap pena a l’hora de demanar canvis.
+                        </p>
+                        
+                        <p data-lang-ca="Per cert, estava pensant que el dimecres et volia haver dit el que et vaig a dir ara, però estava cansat i després ja no he trobat el moment. És un poc random, però mira, m’ha vingut així ara que estava fent açò, i així ho pots llegir quan estigues tranquil."
+                           data-lang-es="Por cierto, estaba pensando que el miércoles te quería haber dicho lo que te voy a decir ahora, pero estaba cansado y después ya no he encontrado el momento. Es un poco random, pero mira, me ha venido así ahora que estaba haciendo esto, y así lo puedes leer cuando estés tranquilo.">
+                            Per cert, estava pensant que el dimecres et volia haver dit el que et vaig a dir ara, però estava cansat i després ja no he trobat el moment. És un poc random, però mira, m’ha vingut així ara que estava fent açò, i així ho pots llegir quan estigues tranquil.
+                        </p>
+                        
+                        <p data-lang-ca="Volia dir-te que el dimecres vaig estar molt a gust amb tu, molt més de l’habitual, i mira que sempre que ens hem vist ho he estat. Et vaig veure molt guapo, t’ha sentat bé el començament de l’estiu."
+                           data-lang-es="Quería decirte que el miércoles estuve muy a gusto contigo, mucho más de lo habitual, y mira que siempre que nos hemos visto lo he estado. Te vi muy guapo, te ha sentado bien el comienzo del verano.">
+                            Volia dir-te que el dimecres vaig estar molt a gust amb tu, molt més de l’habitual, i mira que sempre que ens hem vist ho he estat. Et vaig veure molt guapo, t’ha sentat bé el començament de l’estiu.
+                        </p>
+                        
+                        <p data-lang-ca="També m’ho vaig passar molt bé i se’m va passar el dia volant, jajaj. Et vaig dir que havia de modificar el rànquing, i sí, el pose en top 1. Vaig disfrutar molt, la veritat."
+                           data-lang-es="También me lo pasé muy bien y se mi pasó el día volando, jajaj. Te dije que tenía que modificar el ranking, y sí, lo pongo en top 1. Disfruté mucho, la verdad.">
+                            També m’ho vaig passar molt bé i se’m va passar el dia volant, jajaj. Et vaig dir que havia de modificar el rànquing, i sí, el pose en top 1. Vaig disfrutar molt, la veritat.
+                        </p>
+                        
+                        <p data-lang-ca="T’ho volia dir també perquè m’agrada parlar les coses i em pareix guai posar-ho en valor. Tinc ganes de repetir un dia així, jeje."
+                           data-lang-es="Te lo quería decir también porque mi gusta hablar las cosas y me parece guai ponerlo en valor. Tengo ganas de repetir un día así, jeje.">
+                            T’ho volia dir també perquè m’agrada parlar les coses i em pareix guai posar-ho en valor. Tinc ganes de repetir un dia així, jeje.
+                        </p>
+                        
+                        <p data-lang-ca="Aprofite també per a dir-te que estic preparant un joc que, si ix bé, pot estar guai per al dilluns, quan fem el soparet a la mar."
+                           data-lang-es="Aprovecho también para decirte que estoy preparando un juego que, si sale bien, puede estar guai para el lunes, cuando hagamos el cenar en el mar.">
+                            Aprofite també per a dir-te que estic preparant un joc que, si ix bé, pot estar guai per al dilluns, quan fem el soparet a la mar.
+                        </p>
+                        
+                        <p data-lang-ca="Bueno, que pareix que m’hagen donat corda. Me’n vaig a planxar l’orella, que ara per fi m’ha entrat son."
+                           data-lang-es="Bueno, que parece que me hayan dado cuerda. Me voy a planchar la oreja, que ahora por fin me ha entrado sueño.">
+                            Bueno, que pareix que m’hagen donat corda. Me’n vaig a planxar l’orella, que ara per fi m’ha entrat son.
+                        </p>
+                        
+                    </div>
+
+                    <!-- Botó inferior elegant per a tornar de manera còmoda -->
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button onclick="navigateTo('portada')" class="btn-back" data-lang-ca="← Tornar a l'inici" data-lang-es="← Volver al inicio" style="background: transparent; border: 1px solid #88D6E6; padding: 12px 30px; border-radius: 30px; color: #88D6E6; cursor: pointer; font-weight: bold; transition: all 0.3s; font-size: 1rem;">
+                            ← Tornar a l'inici
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Peu de pàgina (Sempre visible) -->
+    <footer>
+        <p>&copy; 2026 @bojito_foto. <span data-lang-ca="Tots els drets reservats." data-lang-es="Todos los derechos reservados.">Tots els drets reservats.</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

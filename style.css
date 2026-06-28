@@ -1,0 +1,191 @@
+/* --- Estils per al sistema de pàgines --- */
+.page {
+    display: none; /* Per defecte, tot amagat */
+    min-height: 80vh;
+    padding-top: 80px; /* Perquè no ho tape el menú fix */
+}
+
+.page.active {
+    display: block; /* Sols es mostra la pàgina activa */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Targetes de Categoria de la Portada --- */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.category-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(136, 214, 230, 0.3); /* Ombra del color #88D6E6 */
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.2));
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.card-overlay span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-left: 3px solid #88D6E6; /* El color favorit */
+    padding-left: 10px;
+}
+
+/* --- Botó de Tornar --- */
+.back-area {
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #88D6E6;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* Mantenim la resta de disseny fosc que ja teníem... */
+:root {
+    --color-principal: #88D6E6;
+    --color-fons: #121212;
+    --color-fons-alt: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-mutat: #aaaaaa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+body { background-color: var(--color-fons); color: var(--color-text); }
+header { background-color: rgba(18, 18, 18, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
+.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+.logo-img { height: 50px; cursor: pointer; }
+nav a { color: var(--color-text); text-decoration: none; margin: 0 15px; }
+nav a:hover { color: var(--color-principal); }
+.btn-lang { background: none; border: 1px solid var(--color-text-mutat); color: var(--color-text-mutat); padding: 3px 8px; cursor: pointer; margin-left: 5px; }
+.btn-lang.active { border-color: var(--color-principal); color: var(--color-principal); }
+.hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.5), #121212), url('imatges/curses.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-size: 3rem; }
+.hero p { color: var(--color-principal); }
+.section-padding { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+.container-text { max-width: 600px; margin: 0 auto; text-align: center; }
+h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--color-principal); margin: 10px auto; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.contact-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.contact-form input, .contact-form textarea { padding: 12px; background: var(--color-fons-alt); border: 1px solid #333; color: #fff; border-radius: 5px; }
+.submit-btn { background: var(--color-principal); border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+footer { text-align: center; padding: 30px; border-top: 1px solid #222; color: var(--color-text-mutat); }
+
+/* --- Nous Botons de Contacte --- */
+.contact-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap; /* Perquè es duga bé amb els mòbils */
+}
+
+.btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px; /* Forma de píndola, molt moderna */
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+/* Botó d'Email: Fons fosc amb vores i text del color #88D6E6 */
+.email-btn {
+    background-color: transparent;
+    border: 2px solid #88D6E6;
+    color: #88D6E6;
+}
+
+.email-btn:hover {
+    background-color: #88D6E6;
+    color: #121212; /* El text passa a fosc en fer hover */
+    box-shadow: 0 0 15px rgba(136, 214, 230, 0.4);
+}
+
+/* Botó d'Instagram: Tot complet amb el color favorit i lletra fosca */
+.instagram-btn {
+    background-color: #88D6E6;
+    border: 2px solid #88D6E6;
+    color: #121212;
+}
+
+.instagram-btn:hover {
+    background-color: transparent;
+    color: #88D6E6;
+    box-shadow: 0 0 15px rgba(136, 214, 230, 0.2);
+}
+
+/* Un xicotet toc per a les icones d'emojis */
+.btn-contact .icon {
+    font-size: 1.3rem;
+}
+/* Mida i comportament de la icona SVG d'Instagram */
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    transition: stroke 0.3s ease;
+}
+
+/* Forcem que el contorn de l'SVG herete el color del text del botó */
+.instagram-btn .instagram-icon {
+    stroke: #121212; /* Color fosc per defecte */
+}
+
+.instagram-btn:hover .instagram-icon {
+    stroke: #88D6E6; /* Canvia al color favorit en fer hover */
+}
