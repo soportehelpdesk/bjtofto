@@ -9,24 +9,31 @@
 <body>
 
     <!-- Capçalera (Sempre visible) -->
+ <!-- Capçalera Adaptativa -->
     <header>
         <div class="nav-container">
             <div class="logo-area" onclick="navigateTo('portada')">
-                <img src="imatge.jpeg" alt="Logo" class="logo-img">
+                <img src="image.png" alt="Logo" class="logo-img">
             </div>
-            <nav>
-                <a href="#" onclick="navigateTo('portada')" data-lang-ca="Inici" data-lang-es="Inicio">Inici</a>
-                <a href="#" onclick="navigateTo('sobre-mi')" data-lang-ca="Sobre mi" data-lang-es="Sobre mí">Sobre mi</a>
-                <a href="#" onclick="navigateTo('contacte')" data-lang-ca="Contacte" data-lang-es="Contacto">Contacte</a>
-                <a href="#" onclick="navigateTo('notes')" data-lang-ca="Notes" data-lang-es="Notas" style="color: #88D6E6;">Notes</a>
-            </nav>
-            <div class="lang-switcher">
-                <button onclick="setLanguage('ca')" class="btn-lang active">VAL</button>
-                <button onclick="setLanguage('es')" class="btn-lang">CAS</button>
+            
+            <!-- Botó Hamburguesa (Sols visible en mòbil) -->
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            
+            <!-- Contenidor que s'amagarà/mostrarà -->
+            <div class="nav-menu-wrapper" id="navMenuWrapper">
+                <nav>
+                    <a href="#" onclick="menuNavigate('portada')" data-lang-ca="Inici" data-lang-es="Inicio">Inici</a>
+                    <a href="#" onclick="menuNavigate('sobre-mi')" data-lang-ca="Sobre mi" data-lang-es="Sobre mí">Sobre mi</a>
+                    <a href="#" onclick="menuNavigate('contacte')" data-lang-ca="Contacte" data-lang-es="Contacto">Contacte</a>
+                    <a href="#" onclick="menuNavigate('notes')" data-lang-ca="Notes" data-lang-es="Notas" style="color: #88D6E6;">Notes</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button onclick="setLanguage('ca')" class="btn-lang active">VAL</button>
+                    <button onclick="setLanguage('es')" class="btn-lang">CAS</button>
+                </div>
             </div>
         </div>
     </header>
-
     <!-- PÀGINA 1: PORTADA -->
     <main id="page-portada" class="page active">
         <section class="hero">
