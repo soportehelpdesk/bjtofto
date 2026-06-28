@@ -92,3 +92,15 @@ function setLanguage(lang) {
     document.querySelectorAll('.btn-lang').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
 }
+// Funció per a obrir/tancar el menú en mòbils
+function toggleMenu() {
+    const menu = document.getElementById('navMenuWrapper');
+    menu.classList.toggle('open');
+}
+
+// Funció especial per a navegar des del menú del mòbil (navega i tanca el menú)
+function menuNavigate(pageId) {
+    navigateTo(pageId);
+    const menu = document.getElementById('navMenuWrapper');
+    menu.classList.remove('open'); // Tanca el menú desplegable
+}
