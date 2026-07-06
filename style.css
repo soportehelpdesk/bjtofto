@@ -580,3 +580,48 @@ footer {
     border-top: 1px solid #222; 
     color: var(--color-text-mutat); 
 }
+
+/* =========================================================
+   ADAPTACIÓ EXPRESS PER A PANTALLES DE MÒBIL
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 1. Asegurar que cap contenidor es menge l'ample de la pantalla */
+    body, html {
+        overflow-x: hidden !important; /* Evita que la web es moga cap als costats */
+        width: 100% !important;
+    }
+
+    main {
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 2. Forçar que les graelles (categories, àlbums, fotos) es posen en 1 o 2 columnes */
+    .categories-grid, .albums-grid, .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; /* S'ajusta sol */
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    /* 3. Evitar que les imatges es desquadren */
+    .category-card img, .album-cover, .gallery-item img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important; /* Les fa quadrades al mòbil perquè quadren millor */
+        object-fit: cover !important;
+    }
+
+    /* 4. Textos de les notes de l'autor (evitar que es tallen) */
+    .container-text, .notes-card {
+        padding: 20px 15px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .notes-content p {
+        font-size: 0.95rem !important; /* Lletra un poc més xicoteta per a pantalles estretes */
+    }
+}
