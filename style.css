@@ -198,7 +198,7 @@ nav a:hover {
 .hero { 
     height: 50vh; 
     /* Truquem a la foto directament si el CSS està a la mateixa carpeta que la imatge */
-    background: linear-gradient(rgba(0,0,0,0.6), #121212), url('curses.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.6), #121212), url('curses.JPG') center/cover no-repeat;
     display: flex; 
     align-items: center; 
     justify-content: center; 
