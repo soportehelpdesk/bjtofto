@@ -1,0 +1,582 @@
+/* =========================================================
+   1. VARIABLES, RESETS I ESTILS BASE
+   ========================================================= */
+:root {
+    --color-principal: #88D6E6;
+    --color-fons: #121212;
+    --color-fons-alt: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-mutat: #aaaaaa;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: sans-serif; 
+}
+
+body { 
+    background-color: var(--color-fons); 
+    color: var(--color-text); 
+}
+
+/* Utilitats comunes */
+.content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-padding { 
+    padding: 40px 20px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.container-text { 
+    max-width: 600px; 
+    margin: 0 auto; 
+    text-align: center; 
+}
+
+h2 { 
+    font-size: 2rem; 
+    margin-bottom: 30px; 
+    text-align: center; 
+}
+
+h2::after { 
+    content: ''; 
+    display: block; 
+    width: 50px; 
+    height: 3px; 
+    background-color: var(--color-principal); 
+    margin: 10px auto; 
+}
+
+
+/* =========================================================
+   2. SISTEMA DE PÀGINES (VISTES SENSE RECARREGA)
+   ========================================================= */
+.page {
+    display: none; /* Per defecte, todo amagat */
+    min-height: 80vh;
+    padding: 80px 20px 40px 20px; /* Protecció per al menú fix superior */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page.active {
+    display: block; /* Sols es mostra la pàgina activa */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* =========================================================
+   3. CAPÇALERA I NAVEGACIÓ BASE
+   ========================================================= */
+header {
+    background-color: rgba(18, 18, 18, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #222;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo-img {
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Botó hamburguesa amagat per defecte en PC */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.nav-menu-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-principal);
+}
+
+.btn-lang {
+    background: none;
+    border: 1px solid var(--color-text-mutat);
+    color: var(--color-text-mutat);
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.btn-lang.active {
+    border-color: var(--color-principal);
+    color: var(--color-principal);
+}
+
+/* --- ADAPTACIÓ PER A MÒBILS --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostrem el botó de les 3 línies */
+    }
+
+    .nav-menu-wrapper {
+        display: none; /* Amaguem el menú normal */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* S'obri just davall de la barra */
+        left: 0;
+        width: 100%;
+        background-color: rgba(18, 18, 18, 0.98);
+        padding: 20px 0;
+        border-bottom: 1px solid #222;
+        gap: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .nav-menu-wrapper.open {
+        display: flex;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 1.2rem; /* Mida idònia per a prémer amb el dit */
+    }
+
+    .lang-switcher {
+        margin-top: 5px;
+    }
+}
+
+
+/* =========================================================
+   4. SECCIÓ HERO I PORTADA
+   ========================================================= */
+.hero { 
+    height: 50vh; 
+    /* Truquem a la foto directament si el CSS està a la mateixa carpeta que la imatge */
+    background: linear-gradient(rgba(0,0,0,0.6), #121212), url('curses.jpg') center/cover no-repeat; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+.hero h1 { 
+    font-size: 3rem; 
+}
+
+.hero p { 
+    color: var(--color-principal); 
+}
+
+/* Grid de categories principales */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.category-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(136, 214, 230, 0.3);
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.2));
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.card-overlay span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-left: 3px solid var(--color-principal);
+    padding-left: 10px;
+}
+
+
+/* =========================================================
+   5. INTERFÍCIE DE LES GALERIES DE FOTOS (SUBCARPETES / ÀLBUMS)
+   ========================================================= */
+/* Botons de tornar enrere generals */
+.back-area {
+    margin-bottom: 20px;
+}
+
+.btn-back, .btn-tornar {
+    background: transparent;
+    border: 1px solid #444;
+    color: #aaa;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-back:hover, .btn-tornar:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    text-decoration: none;
+}
+
+/* Graella d'Àlbums (Subcarpetes) */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding-top: 30px;
+}
+
+.album-card {
+    background: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #2d2d2d;
+    text-align: left;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-principal);
+}
+
+.album-cover-wrapper {
+    width: 100%;
+    height: 190px;
+    background: #252525;
+    overflow: hidden;
+}
+
+.album-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.album-card h3 {
+    margin: 15px 15px 6px 15px;
+    font-size: 1.15rem;
+    color: #ffffff;
+}
+
+.album-count {
+    display: block;
+    margin: 0 15px 15px 15px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Graella de Fotos Finals */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+}
+
+.no-photos {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    padding: 50px 0;
+    font-style: italic;
+}
+
+
+/* =========================================================
+   6. SECCIÓ DE CONTACTE I BOTONS SOCIALS
+   ========================================================= */
+.contact-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px; 
+}
+
+.contact-form input, .contact-form textarea { 
+    padding: 12px; 
+    background: var(--color-fons-alt); 
+    border: 1px solid #333; 
+    color: #fff; 
+    border-radius: 5px; 
+}
+
+.submit-btn { 
+    background: var(--color-principal); 
+    border: none; 
+    padding: 12px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+.contact-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap; /* S'adapta perfectament a mòbils */
+}
+
+.btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px; /* Estil píndola modern */
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+/* Botó de Correu */
+.email-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-principal);
+    color: var(--color-principal);
+}
+
+.email-btn:hover {
+    background-color: var(--color-principal);
+    color: #121212;
+    box-shadow: 0 0 15px rgba(136, 214, 230, 0.4);
+}
+
+/* Botó d'Instagram */
+.instagram-btn {
+    background-color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+    color: #121212;
+}
+
+.instagram-btn:hover {
+    background-color: transparent;
+    color: var(--color-principal);
+    box-shadow: 0 0 15px rgba(136, 214, 230, 0.2);
+}
+
+.btn-contact .icon {
+    font-size: 1.3rem;
+}
+
+/* Tractament especial del contorn SVG d'Instagram */
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    transition: stroke 0.3s ease;
+}
+
+.instagram-btn .instagram-icon {
+    stroke: #121212;
+}
+
+.instagram-btn:hover .instagram-icon {
+    stroke: var(--color-principal);
+}
+
+
+/* =========================================================
+   7. PANTALLA DE CÀRREGA PREMIUM (APERTURA D'OBJECTIU)
+   ========================================================= */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0b0b;
+    z-index: 999999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    pointer-events: none;
+    animation: fadeOutMain 0.6s ease-out 3.5s forwards;
+}
+
+/* Contenidor del logotip en imatge: assegurem que estiga davant */
+.loader-logo-container {
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000001; /* Per damunt de l'objectiu */
+    width: 200px;
+    height: auto;
+    animation: revealLogo 1s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
+}
+
+.loader-logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 15px rgba(136, 214, 230, 0.3)); /* Brillantor del teu color blau */
+}
+
+/* Objectiu exterior de la càmera */
+.camera-lens {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #333;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0,0,0,0.9);
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scaleLens 1.8s ease-out forwards;
+}
+
+/* Fulles del diafragma (Obturador) */
+.shutter-blades {
+    width: 80px;
+    height: 80px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    border: 2px dashed var(--color-principal); 
+    position: relative;
+    animation: shutterClick 0.3s ease-in-out 1.2s forwards;
+}
+
+/* Flash de llum blanca en tota la pantalla */
+.flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000000;
+    animation: flashExplosion 0.4s ease-out 1.4s forwards;
+}
+
+/* --- KEYFRAMES DE L'ANIMACIÓ --- */
+@keyframes scaleLens {
+    0% { transform: scale(0.8); opacity: 0; }
+    20% { transform: scale(1); opacity: 1; }
+    80% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+}
+
+@keyframes shutterClick {
+    0% { transform: scale(1); background: #1a1a1a; }
+    50% { transform: scale(0.1); background: #000; }
+    100% { transform: scale(0); }
+}
+
+@keyframes flashExplosion {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes revealLogo { 
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); } 
+}
+
+@keyframes fadeOutMain { 
+    to { opacity: 0; visibility: hidden; } 
+}
+
+/* =========================================================
+   8. PEU DE PÀGINA (FOOTER)
+   ========================================================= */
+footer { 
+    text-align: center; 
+    padding: 30px; 
+    border-top: 1px solid #222; 
+    color: var(--color-text-mutat); 
+}
